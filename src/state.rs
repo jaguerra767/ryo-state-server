@@ -1,10 +1,7 @@
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use serde::{Deserialize, Serialize};
-// #[derive(Serialize)]
-// pub struct Message {
-//     pub(crate) message: String,
-// }
+
 pub enum ApiResponse {
     Ok,
     Created,
