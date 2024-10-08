@@ -43,7 +43,15 @@ pub async fn update_node_levels(
 ) -> Result<ApiResponse, ApiError> {
     println!("{:?}", new_state);
     let mut ryo_state = state.lock().await;
-    ryo_state.node_levels = new_state;
+    //ryo_state.node_levels = new_state;
+    ryo_state.node_levels.node_a_level_ingredient_id = new_state.node_a_level_ingredient_id;
+    ryo_state.node_levels.node_a_level_ingredient_name = new_state.node_a_level_ingredient_name;
+    ryo_state.node_levels.node_b_level_ingredient_id = new_state.node_b_level_ingredient_id;
+    ryo_state.node_levels.node_b_level_ingredient_name = new_state.node_b_level_ingredient_name;
+    ryo_state.node_levels.node_c_level_ingredient_id = new_state.node_c_level_ingredient_id;
+    ryo_state.node_levels.node_c_level_ingredient_name = new_state.node_c_level_ingredient_name;
+    ryo_state.node_levels.node_d_level_ingredient_id = new_state.node_d_level_ingredient_id;
+    ryo_state.node_levels.node_d_level_ingredient_name = new_state.node_d_level_ingredient_name;
     Ok(ApiResponse::Ok)
 }
 

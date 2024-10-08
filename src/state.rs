@@ -69,18 +69,18 @@ pub enum NodeLevel {
 #[derive(Serialize, Deserialize, Debug, Default, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct NodeLevels {
-    node_a_level: NodeLevel,
-    node_a_level_ingredient_id: String,
-    node_a_level_ingredient_name: String,
-    node_b_level: NodeLevel,
-    node_b_level_ingredient_id: String,
-    node_b_level_ingredient_name: String,
-    node_c_level: NodeLevel,
-    node_c_level_ingredient_id: String,
-    node_c_level_ingredient_name: String,
-    node_d_level: NodeLevel,
-    node_d_level_ingredient_id: String,
-    node_d_level_ingredient_name: String,
+    pub node_a_level: NodeLevel,
+    pub node_a_level_ingredient_id: String,
+    pub node_a_level_ingredient_name: String,
+    pub node_b_level: NodeLevel,
+    pub node_b_level_ingredient_id: String,
+    pub node_b_level_ingredient_name: String,
+    pub node_c_level: NodeLevel,
+    pub node_c_level_ingredient_id: String,
+    pub node_c_level_ingredient_name: String,
+    pub node_d_level: NodeLevel,
+    pub node_d_level_ingredient_id: String,
+    pub node_d_level_ingredient_name: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone)]
