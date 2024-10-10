@@ -119,7 +119,7 @@ enum DoorStatus {
 #[serde(rename_all = "camelCase")]
 pub struct Status {
     front_door_status: String,
-    system_status: SystemStatus,
+    pub system_status: SystemStatus,
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone)]

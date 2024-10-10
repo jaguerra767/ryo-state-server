@@ -84,7 +84,7 @@ pub async fn update_status(
     Json(new_status): Json<Status>,
 ) -> Result<ApiResponse, ApiError> {
     let mut ryo_state = state.lock().await;
-    ryo_state.status = new_status;
+    ryo_state.status.system_status = new_status.system_status;
     Ok(ApiResponse::Ok)
 }
 
