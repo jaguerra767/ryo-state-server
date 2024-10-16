@@ -1,6 +1,6 @@
 use crate::state::ApiResponse::JsonData;
 use crate::state::{
-    ApiError, ApiResponse, JobSetupStep, NodeLevels, NodeWeights, RyoState, Status,
+    ApiError, ApiResponse, JobQty, JobSetupStep, NodeLevels, NodeWeights, RyoState, Status,
     SystemCleaningMaintenance,
 };
 use axum::extract::State;
@@ -19,6 +19,15 @@ pub async fn update_state(
 ) -> Result<ApiResponse, ApiError> {
     let mut ryo_state = state.lock().await;
     *ryo_state = new_state;
+    Ok(ApiResponse::Ok)
+}
+
+pub async fn update_job_qty(
+    State(state): State<Arc<Mutex<RyoState>>>,
+    Json(new_state): Json<JobQty>,
+) -> Result<ApiResponse, ApiError> {
+    let mut ryo_state = state.lock().await;
+    ryo_state.job_qty = new_state.job_qty;
     Ok(ApiResponse::Ok)
 }
 
@@ -43,7 +52,6 @@ pub async fn update_node_levels(
 ) -> Result<ApiResponse, ApiError> {
     println!("{:?}", new_state);
     let mut ryo_state = state.lock().await;
-    //ryo_state.node_levels = new_state;
     ryo_state.node_levels.node_a_level_ingredient_id = new_state.node_a_level_ingredient_id;
     ryo_state.node_levels.node_a_level_ingredient_name = new_state.node_a_level_ingredient_name;
     ryo_state.node_levels.node_b_level_ingredient_id = new_state.node_b_level_ingredient_id;
@@ -58,7 +66,6 @@ pub async fn update_node_levels(
 pub async fn get_node_weights(
     State(state): State<Arc<Mutex<RyoState>>>,
 ) -> Result<ApiResponse, ApiError> {
-    println!("get node weights called");
     let node_levels = &state.lock().await.node_weights;
     Ok(JsonData(serde_json::to_string(node_levels).unwrap()))
 }

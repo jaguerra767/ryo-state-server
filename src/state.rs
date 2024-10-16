@@ -57,6 +57,12 @@ pub struct JobProgress {
     job_progress: usize,
 }
 
+#[derive(Serialize, Deserialize, Debug, Default)]
+#[serde(rename_all = "camelCase")]
+pub struct JobQty {
+    pub job_qty: usize,
+}
+
 #[derive(Serialize, Deserialize, Debug, Default, Clone)]
 #[serde(rename_all = "UPPERCASE")]
 pub enum NodeLevel {
